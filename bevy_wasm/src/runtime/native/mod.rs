@@ -6,6 +6,7 @@ use bevy::{
     utils::{HashMap, Instant},
 };
 use bevy_wasm_shared::version::Version;
+use uuid::Uuid;
 use wasmtime::*;
 
 use crate::{mod_state::ModState, SharedResource};
@@ -86,6 +87,8 @@ impl WasmInstance {
     pub fn update_resource_value<T: SharedResource>(&mut self, bytes: Arc<[u8]>) {
         let state = self.store.data_mut();
 
-        state.shared_resource_values.insert(T::TYPE_UUID, bytes);
+        state
+            .shared_resource_values
+            .insert(Uuid::from_bytes(T::UUID), bytes);
     }
 }

@@ -15,3 +15,5 @@ bevy_wasm_shared.workspace = true
 bevy_wasm_sys_core.workspace = true
 bincode.workspace = true
 serde.workspace = true
+type-uuid.workspace = true
+uuid.workspace = true

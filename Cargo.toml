@@ -56,6 +56,8 @@ wasi-common = "25.0.1"
 wasm-bindgen = "0.2"
 wasmtime = "25.0.1"
 web-sys = { version = "0.3.72", features = ["console", "WorkerGlobalScope"] }
+type-uuid = "0.1.2"
+uuid = "1.11.0"
 
 [profile.release-wasm]
 debug = false

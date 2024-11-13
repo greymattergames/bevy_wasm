@@ -1,9 +1,10 @@
 use std::time::Instant;
 
 use anyhow::Result;
-use bevy::{prelude::*, utils::Uuid};
+use bevy::prelude::*;
 use bevy_wasm_shared::prelude::*;
 use colored::*;
+use uuid::Uuid;
 use wasmtime::*;
 
 use crate::mod_state::ModState;
