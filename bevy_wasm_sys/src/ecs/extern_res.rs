@@ -12,7 +12,7 @@ use bevy_ecs::{prelude::*, system::SystemParam};
 use bevy_reflect::TypeUuid;
 use serde::{de::DeserializeOwned, Serialize};
 
-use crate::error;
+use bevy_wasm_sys_core::error;
 
 /// A resource that can be shared from the Host
 pub trait SharedResource: Resource + Default + Serialize + DeserializeOwned + TypeUuid {}

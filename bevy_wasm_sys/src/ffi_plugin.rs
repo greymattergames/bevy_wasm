@@ -2,20 +2,19 @@
 
 use std::ffi::c_void;
 
-use bevy_app::{App, Plugin};
-use bevy_ecs::{
+use bevy::app::{App, Plugin};
+use bevy::ecs::{
     prelude::{EventReader, EventWriter},
     system::ResMut,
 };
 use bevy_wasm_shared::prelude::*;
 use serde::{de::DeserializeOwned, Serialize};
+use bevy_wasm_sys_core::events::{get_next_event, send_event};
+use bevy_wasm_sys_core::{error, info};
 
 use crate::{
     ecs::extern_res::ExternResources,
-    error,
-    events::{get_next_event, send_event},
     ffi::store_app,
-    info,
     time::Time,
 };
 
