@@ -29,7 +29,7 @@ shared_resources_protocol = { path = "examples/shared_resources/shared_resources
 
 # External dependencies
 anyhow = "1.0"
-bevy = { version = "0.14.2", default-features = false, features = [
+bevy = { version = "0.15.1", default-features = false, features = [
 	"bevy_asset",
 	"bevy_core_pipeline",
 	"bevy_gilrs",
