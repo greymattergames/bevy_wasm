@@ -3,7 +3,7 @@ use std::{collections::VecDeque, sync::Arc};
 use anyhow::{Context, Result};
 use bevy::{
     prelude::{Component, Resource},
-    utils::{HashMap, Instant},
+    utils::{FixedHasher, HashMap, Instant},
 };
 use bevy_wasm_shared::version::Version;
 use uuid::Uuid;
@@ -49,7 +49,7 @@ impl WasmRuntime {
             app_ptr: 0,
             events_out: Vec::new(),
             events_in: VecDeque::new(),
-            shared_resource_values: HashMap::new(),
+            shared_resource_values: HashMap::with_hasher(FixedHasher),
         };
 
         let wasi_mod_state = WasiModState {
