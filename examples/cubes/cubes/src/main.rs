@@ -28,28 +28,25 @@ fn setup(
     mut materials: ResMut<Assets<StandardMaterial>>,
 ) {
     // plane
-    commands.spawn(PbrBundle {
-        mesh: meshes.add(Mesh::from(
+    commands.spawn((
+        Mesh3d(meshes.add(Mesh::from(
             Plane3d::default().mesh().size(5.0, 5.0).subdivisions(0),
-        )),
-        material: materials.add(Color::srgb(0.3, 0.5, 0.3)),
-        ..default()
-    });
-    commands.spawn(PointLightBundle {
-        point_light: PointLight {
-            intensity: 1500.0,
+        ))),
+        MeshMaterial3d(materials.add(Color::srgb(0.3, 0.5, 0.3))),
+    ));
+    commands.spawn((
+        PointLight {
+            intensity: 1000000.0,
             shadows_enabled: true,
             ..default()
         },
-        transform: Transform::from_xyz(4.0, 8.0, 4.0),
-        ..default()
-    });
+        Transform::from_xyz(4.0, 8.0, 4.0)
+    ));
     // camera
-    commands.spawn(Camera3dBundle {
-        transform: Transform::from_xyz(-2.0, 3.5, 5.0)
-            .looking_at(Vec3::new(0.0, 1.0, 0.0), Vec3::Y),
-        ..default()
-    });
+    commands.spawn((
+        Camera3d::default(),
+        Transform::from_xyz(-2.0, 3.5, 5.0).looking_at(Vec3::new(0.0, 1.0, 0.0), Vec3::Y)
+    ));
 }
 
 fn update_cubes_from_mods(
@@ -70,12 +67,11 @@ fn update_cubes_from_mods(
             ModMessage::SpawnCube { mod_state, color } => {
                 info!("Spawning cube from mod {:x}!", mod_state);
                 let entity_id = commands
-                    .spawn(PbrBundle {
-                        mesh: meshes.add(Mesh::from(Cuboid::new(0.5, 0.5, 0.5))),
-                        material: materials.add(Color::srgb(color.0, color.1, color.2)),
-                        transform: Transform::from_xyz(0.0, 0.5, 0.0),
-                        ..default()
-                    })
+                    .spawn((
+                        Mesh3d(meshes.add(Mesh::from(Cuboid::new(0.5, 0.5, 0.5)))),
+                        MeshMaterial3d(materials.add(Color::srgb(color.0, color.1, color.2))),
+                        Transform::from_xyz(0.0, 0.5, 0.0)
+                    ))
                     .id()
                     .index();
                 host_messages.send(HostMessage::SpawnedCube {
