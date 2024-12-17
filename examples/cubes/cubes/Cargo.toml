@@ -6,6 +6,6 @@ publish = false
 version = "0.1.0"
 
 [dependencies]
-bevy.workspace = true
+bevy = { workspace = true, features = ["bevy_winit", "bevy_window"] }
 bevy_wasm.workspace = true
 cubes_protocol.workspace = true
