@@ -21,6 +21,8 @@ thiserror.workspace = true
 tracing.workspace = true
 uuid.workspace = true
 type-uuid.workspace = true
+hashbrown.workspace = true
+foldhash.workspace = true
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 wasmtime.workspace = true

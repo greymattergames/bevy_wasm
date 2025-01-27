@@ -58,6 +58,8 @@ wasmtime = "25.0.1"
 web-sys = { version = "0.3.72", features = ["console", "WorkerGlobalScope"] }
 type-uuid = "0.1.2"
 uuid = "1.11.0"
+hashbrown = "0.15.1"
+foldhash = "0.1.3"
 
 [profile.release-wasm]
 debug = false
